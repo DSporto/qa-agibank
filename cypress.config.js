@@ -9,10 +9,18 @@ const {
 } = require("@badeball/cypress-cucumber-preprocessor/esbuild");
 
 module.exports = defineConfig({
-  e2e: {
-    baseUrl: "https://blog.agibank.com.br",
+e2e: {
+  baseUrl: "https://blog.agibank.com.br",
 
-    specPattern: "cypress/e2e/**/*.feature",
+  expose: {
+    dogApiUrl: "https://dog.ceo/api"
+  },
+
+  specPattern: [
+    "cypress/e2e/**/*.feature",
+    "cypress/e2e/**/*.cy.js"
+  ],
+
 
     async setupNodeEvents(on, config) {
       await addCucumberPreprocessorPlugin(on, config);

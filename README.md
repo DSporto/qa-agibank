@@ -1,73 +1,103 @@
-# Automação Web - Site do Agi
+# QA Agibank - Automação de Testes
 
-Projeto de automação de testes 
+# QA Agibank - Automação de Testes
 
-## Tecnologias utilizadas
+Projeto de automação de testes desenvolvido com Cypress, contemplando testes Web e testes de API.
 
+## Tecnologias
+
+- Cypress 16
 - JavaScript
-- Cypress
-- Cucumber
-- Page Object Model
+- Cucumber / Gherkin
+- Page Object
 - Node.js
 
-## Cenários automatizados
+## Testes Web
 
-### Cenário 1 - Pesquisa por empréstimo consignado
+Automação de cenários de busca no Blog do Agibank utilizando:
 
-Validar a pesquisa de opções utilizando o termo "Empréstimo consignado".
+- Cypress
+- Cucumber
+- Gherkin
+- Page Object
 
-### Cenário 2 - Pesquisa por cartões
+> Observação: alguns comportamentos da funcionalidade de busca podem depender da disponibilidade da aplicação.
 
-Validar a pesquisa de opções utilizando o termo "cartões".
+## Testes de API
+
+Os testes de API utilizam a Dog API para validar diferentes cenários.
+
+### Cenários implementados
+
+- Consulta da lista de raças
+- Consulta de imagens da raça Labrador
+- Consulta de imagem aleatória
+- Validação de erro para raça inexistente
+
+### Validações realizadas
+
+- Status HTTP
+- Status retornado no body
+- Tipo dos dados retornados
+- Conteúdo da resposta
+- Cenário negativo com HTTP 404
+
+## Executando o projeto
+
+### Pré-requisitos
+
+- Node.js
+- npm
+
+### Instalar as dependências
+
+```bash
+npm install
+```
+
+### Abrir o Cypress
+
+```bash
+npm run cy:open
+```
+
+### Executar os testes em modo headless
+
+```bash
+npm run cy:run
+```
 
 ## Estrutura do projeto
 
+```text
 cypress/
 ├── e2e/
+│   ├── api/
+│   │   └── dogAPI.cy.js
 │   └── features/
 │       └── busca.feature
+├── fixtures/
 ├── pages/
 │   └── BuscaPage.js
 ├── step_definitions/
 │   └── busca.step.js
 └── support/
+```
 
-## Pré-requisitos
+## Cenários automatizados
 
-- Node.js
-- npm
-- Google Chrome
+### Web
 
-## Instalação
+- Pesquisa por empréstimo consignado
+- Pesquisa por cartões
 
-Clone o repositório:
+### API
 
-git clone <URL_DO_REPOSITORIO>
+- Retorno da lista de raças
+- Retorno das imagens da raça Labrador
+- Retorno de uma imagem aleatória
+- Tratamento de raça inexistente
 
-Entre na pasta do projeto:
+## Autor
 
-cd qa-agibank
-
-Instale as dependências:
-
-npm install
-
-## Executando os testes
-
-Para executar utilizando a interface gráfica do Cypress:
-
-npm run cy:open
-
-Para executar em modo headless:
-
-npm run cy:run
-
-## Observações
-
-Durante o desenvolvimento dos testes, foi identificado que o acionamento
-do ícone de pesquisa ocorre normalmente, porém o campo de pesquisa não
-está sendo exibido no ambiente.
-
-Por esse motivo, a interação com o campo de pesquisa e a validação dos
-resultados permanecem pendentes até que a funcionalidade esteja
-disponível novamente.
+Projeto desenvolvido para prática e demonstração de conhecimentos em automação de testes Web e API.
