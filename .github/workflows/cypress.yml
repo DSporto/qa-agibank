@@ -10,9 +10,9 @@ on:
 
 jobs:
   cypress-run:
-    runs-on: ubuntu-latest     
+    runs-on: ubuntu-latest
 
-     steps:
+    steps:
       - name: Checkout do projeto
         uses: actions/checkout@v4
 
@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      
+
       - name: Instalar dependências
         run: npm ci
 
