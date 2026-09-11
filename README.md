@@ -1,7 +1,5 @@
 # QA Agibank - Automação de Testes
 
-# QA Agibank - Automação de Testes
-
 Projeto de automação de testes desenvolvido com Cypress, contemplando testes Web e testes de API.
 
 ## Tecnologias
@@ -11,6 +9,7 @@ Projeto de automação de testes desenvolvido com Cypress, contemplando testes W
 - Cucumber / Gherkin
 - Page Object
 - Node.js
+- GitHub Actions
 
 ## Testes Web
 
@@ -97,6 +96,28 @@ cypress/
 - Retorno das imagens da raça Labrador
 - Retorno de uma imagem aleatória
 - Tratamento de raça inexistente
+
+## Integração Contínua
+
+O projeto possui integração contínua utilizando GitHub Actions.
+
+A pipeline é executada automaticamente em:
+
+- Push para a branch `main`
+- Pull Requests para a branch `main`
+
+Durante a execução são realizadas as seguintes etapas:
+
+1. Checkout do projeto
+2. Configuração do Node.js
+3. Instalação das dependências
+4. Execução automatizada dos testes Cypress
+
+A pipeline executa os testes Web e de API através do comando:
+
+```bash
+npm run cy:run
+```
 
 ## Autor
 
