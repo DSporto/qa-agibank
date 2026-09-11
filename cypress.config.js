@@ -16,6 +16,15 @@ e2e: {
     dogApiUrl: "https://dog.ceo/api"
   },
 
+  reporter: "mochawesome",
+
+  reporterOptions: {
+    reportDir: "cypress/reports",
+    overwrite: false,
+    html: true,
+    json: true
+  },
+
   specPattern: [
     "cypress/e2e/**/*.feature",
     "cypress/e2e/**/*.cy.js"

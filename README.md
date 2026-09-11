@@ -124,7 +124,31 @@ A pipeline executa os testes Web e de API através do comando:
 ```bash
 npm run cy:run
 ```
+## Relatório de Testes
+
+Os testes de API geram um relatório utilizando Mochawesome.
+
+Após a execução:
+
+```bash
+npx cypress run --spec "cypress/e2e/api/dogAPI.cy.js"
+```
+
+O relatório é gerado em:
+
+```text
+cypress/reports/mochawesome.html
+```
+
+Também é gerado um arquivo JSON com os resultados:
+
+```text
+cypress/reports/mochawesome.json
+```
+
+O relatório apresenta os testes executados, sucessos, falhas e detalhes de erros encontrados.
 
 ## Autor
 
 Projeto desenvolvido para prática e demonstração de conhecimentos em automação de testes Web e API.
+
