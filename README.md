@@ -1,5 +1,11 @@
 # QA Agibank - Automação de Testes
 
+# QA Agibank - Automação de Testes
+
+![Cypress Tests](https://github.com/DSporto/qa-agibank/actions/workflows/cypress.yml/badge.svg)
+
+Projeto de automação de testes desenvolvido com Cypress, contemplando testes Web e testes de API.
+
 Projeto de automação de testes desenvolvido com Cypress, contemplando testes Web e testes de API.
 
 ## Tecnologias
