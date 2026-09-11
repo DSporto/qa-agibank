@@ -1,0 +1,162 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-09-11T18:05:57.159Z",
+    "end": "2026-09-11T18:05:58.239Z",
+    "duration": 1080,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "13861e0c-380e-4c35-89b0-7bbe3ecfdca1",
+      "title": "",
+      "fullFile": "cypress\\e2e\\api\\dogAPI.cy.js",
+      "file": "cypress\\e2e\\api\\dogAPI.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "66079fc1-cc97-45d6-b6a7-08a7a918e9af",
+          "title": "Dog API",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "deve retornar a lista de raças com sucesso",
+              "fullTitle": "Dog API deve retornar a lista de raças com sucesso",
+              "timedOut": null,
+              "duration": 464,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request(\"GET\", `${apiUrl}/breeds/list/all`).then((response) => {\n  expect(response.status).to.eq(200);\n  expect(response.body.status).to.eq(\"success\");\n  expect(response.body.message).to.be.an(\"object\");\n});",
+              "err": {},
+              "uuid": "5b45e37a-3245-408d-abc8-674f160b1198",
+              "parentUUID": "66079fc1-cc97-45d6-b6a7-08a7a918e9af",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "deve retornar as imagens da raça labrador",
+              "fullTitle": "Dog API deve retornar as imagens da raça labrador",
+              "timedOut": null,
+              "duration": 196,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request(\"GET\", `${apiUrl}/breed/labrador/images`).then((response) => {\n  expect(response.status).to.eq(200);\n  expect(response.body.status).to.eq(\"success\");\n  expect(response.body.message).to.be.an(\"array\");\n  expect(response.body.message).to.not.be.empty;\n});",
+              "err": {},
+              "uuid": "e331edd0-6fda-4451-a1e1-7339bc290a89",
+              "parentUUID": "66079fc1-cc97-45d6-b6a7-08a7a918e9af",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "deve retornar uma imagem aleatória com sucesso",
+              "fullTitle": "Dog API deve retornar uma imagem aleatória com sucesso",
+              "timedOut": null,
+              "duration": 190,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request(\"GET\", `${apiUrl}/breeds/image/random`).then((response) => {\n  expect(response.status).to.eq(200);\n  expect(response.body.status).to.eq(\"success\");\n  expect(response.body.message).to.be.a(\"string\");\n  expect(response.body.message).to.include(\"https://images.dog.ceo/\");\n});",
+              "err": {},
+              "uuid": "2efc3e6f-023c-469e-9109-17bca1196e42",
+              "parentUUID": "66079fc1-cc97-45d6-b6a7-08a7a918e9af",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "deve retornar erro ao buscar uma raça inexistente",
+              "fullTitle": "Dog API deve retornar erro ao buscar uma raça inexistente",
+              "timedOut": null,
+              "duration": 194,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: \"GET\",\n  url: `${apiUrl}/breed/raca-inexistente/images`,\n  failOnStatusCode: false\n}).then((response) => {\n  expect(response.status).to.eq(404);\n  expect(response.body.status).to.eq(\"error\");\n  expect(response.body.message).to.exist;\n});",
+              "err": {},
+              "uuid": "cfa79486-c21c-4279-8114-8a37e1465582",
+              "parentUUID": "66079fc1-cc97-45d6-b6a7-08a7a918e9af",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5b45e37a-3245-408d-abc8-674f160b1198",
+            "e331edd0-6fda-4451-a1e1-7339bc290a89",
+            "2efc3e6f-023c-469e-9109-17bca1196e42",
+            "cfa79486-c21c-4279-8114-8a37e1465582"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1044,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "8.1.0"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

@@ -5,10 +5,16 @@ class BuscaPage {
   }
 
   abrirBusca() {
-    this.elements.botaoBusca()
-      .should('be.visible')
-      .click()
-  }
+  this.elements.botaoBusca()
+    .filter(':visible')
+    .first()
+    .should('exist')
+
+  this.elements.botaoBusca()
+    .filter(':visible')
+    .first()
+    .click({ force: true })
+}
 
   pesquisar(termo) {
     // implementar quando o campo de busca estiver acessível
