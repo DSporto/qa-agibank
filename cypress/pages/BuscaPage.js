@@ -1,27 +1,37 @@
-
 class BuscaPage {
-  elements = {
-    botaoBusca: () => cy.get('[aria-label="Search icon link"]').first()
+
+  acessarSite() {
+    cy.visit('https://agibank.com.br/')
   }
 
-  abrirBusca() {
-  this.elements.botaoBusca()
-    .filter(':visible')
-    .first()
-    .should('exist')
+  
 
-  this.elements.botaoBusca()
-    .filter(':visible')
-    .first()
+  selecionarEmprestimos() {
+    cy.contains('Empréstimos', { timeout: 10000 })
+      .should('be.visible')
+      .click()
+  }
+
+  selecionarCartoes() {
+  cy.contains('a', 'Cartões', { timeout: 10000 })
+    .should('exist')
     .click({ force: true })
 }
 
-  pesquisar(termo) {
-    // implementar quando o campo de busca estiver acessível
+validarCartoes() {
+  cy.url({ timeout: 10000 })
+    .should('include', '/cartoes')
+}
+  
+
+  validarEmprestimos() {
+    cy.contains('Empréstimo', { timeout: 10000 })
+      .should('be.visible')
   }
 
-  validarResultados(termo) {
-    // implementar quando conseguirmos executar a busca
+  validarCartoes() {
+    cy.contains('Cart', { timeout: 10000 })
+      .should('be.visible')
   }
 }
 

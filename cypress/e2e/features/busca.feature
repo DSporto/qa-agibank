@@ -1,15 +1,15 @@
-Feature: Pesquisa de artigos no Blog do Agi
+Feature: Consulta de produtos no site do Agi Bank
 
   Como usuário do site do Agi Bank
-  Quero pesquisar produtos
-  Para encontrar as opções de produtos
+  Quero consultar os produtos disponíveis
+  Para conhecer as opções oferecidas pelo banco
 
-  Scenario: Pesquisar por empréstimo consignado
-    Given que acesso o site do Agi
-    When pesquiso por "Empréstimo consignado"
-    Then devo visualizar resultados relacionados a "Empréstimo consignado"
+  Scenario: Consultar opções de empréstimo
+    Given que acesso o site do Agi Bank
+    When seleciono a opção "Empréstimos"
+    Then devo visualizar as opções de empréstimos disponíveis
 
-  Scenario: Pesquisar por cartões
-    Given que acesso o site do Agi
-    When pesquiso por "cartões"
-    Then devo visualizar resultados relacionados a "cartões"
+  Scenario: Consultar opções de cartões
+    Given que acesso o site do Agi Bank
+    When seleciono a opção "Cartões"
+    Then devo visualizar as opções de cartões disponíveis
