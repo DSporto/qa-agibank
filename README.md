@@ -2,9 +2,11 @@
 
 ![Cypress Tests](https://github.com/DSporto/qa-agibank/actions/workflows/cypress.yml/badge.svg)
 
-Projeto de automação de testes contemplando testes Web, API e Performance, utilizando Cypress, Cucumber, GitHub Actions e Apache JMeter.
+Projeto desenvolvido como desafio técnico de QA, reunindo testes automatizados de Web e API, além de testes de performance.
 
-## Tecnologias
+Para a automação foram utilizados Cypress, Cucumber/Gherkin e Page Object. Os testes de performance foram desenvolvidos com Apache JMeter.
+
+## Tecnologias utilizadas
 
 - Cypress 16
 - JavaScript
@@ -17,25 +19,29 @@ Projeto de automação de testes contemplando testes Web, API e Performance, uti
 
 ## Testes Web
 
-Automação de cenários de busca no Blog do Agibank utilizando Cypress, Cucumber, Gherkin e o padrão Page Object.
+Os testes Web foram desenvolvidos com Cypress e Cucumber, utilizando Gherkin para descrever os cenários e Page Object para separar as ações da página das definições dos steps.
+
+Os cenários realizam consultas de produtos disponíveis no site do Agibank.
 
 ### Cenários implementados
 
-- Pesquisa por empréstimo consignado
-- Pesquisa por cartões
+- Consulta das opções de empréstimos
+- Consulta das opções de cartões
 
-> Observação: alguns comportamentos da funcionalidade de busca podem depender da disponibilidade da aplicação.
+Os testes validam o acesso ao site, a seleção das opções de produtos e o direcionamento para o conteúdo correspondente.
 
 ## Testes de API
 
-Os testes de API utilizam a Dog API para validar diferentes cenários de requisição e resposta.
+Para os testes de API foi utilizada a Dog API.
+
+Foram criados cenários positivos e negativos para validar as respostas da API.
 
 ### Cenários implementados
 
 - Consulta da lista de raças
 - Consulta de imagens da raça Labrador
 - Consulta de imagem aleatória
-- Validação de erro para raça inexistente
+- Consulta de uma raça inexistente
 
 ### Validações realizadas
 
@@ -43,7 +49,7 @@ Os testes de API utilizam a Dog API para validar diferentes cenários de requisi
 - Status retornado no body
 - Tipo dos dados retornados
 - Conteúdo da resposta
-- Cenário negativo com HTTP 404
+- Tratamento de cenário negativo com HTTP 404
 
 ## Executando o projeto
 
@@ -54,7 +60,7 @@ Para executar os testes Web e API:
 - Node.js
 - npm
 
-Para executar os testes de Performance:
+Para executar os testes de performance:
 
 - Java 8 ou superior
 - Apache JMeter 5.6.3
@@ -111,8 +117,8 @@ qa-agibank/
 
 ### Web
 
-- Pesquisa por empréstimo consignado
-- Pesquisa por cartões
+- Consulta das opções de empréstimos
+- Consulta das opções de cartões
 
 ### API
 
@@ -123,7 +129,7 @@ qa-agibank/
 
 ## Integração Contínua
 
-O projeto possui integração contínua utilizando GitHub Actions.
+O projeto possui integração contínua configurada com GitHub Actions.
 
 A pipeline é executada automaticamente em:
 
@@ -135,50 +141,48 @@ Durante a execução são realizadas as seguintes etapas:
 1. Checkout do projeto
 2. Configuração do Node.js
 3. Instalação das dependências
-4. Execução automatizada dos testes Cypress
+4. Execução dos testes Cypress
 
-A pipeline executa os testes Web e de API através do comando:
+Os testes Web e de API são executados através do comando:
 
 ```bash
 npm run cy:run
 ```
 
-## Relatório de Testes Web e API
+## Relatórios dos testes Web e API
 
-Os testes automatizados utilizam Mochawesome para geração de relatórios.
+O projeto utiliza Mochawesome para geração dos relatórios dos testes automatizados.
 
-Para executar especificamente os testes de API:
+Para executar somente os testes de API:
 
 ```bash
 npx cypress run --spec "cypress/e2e/api/dogAPI.cy.js"
 ```
 
-Os relatórios são gerados no diretório:
+Os relatórios gerados pelo Cypress ficam disponíveis em:
 
 ```text
 cypress/reports/
 ```
 
-Entre os arquivos gerados estão relatórios nos formatos HTML e JSON.
-
-O relatório apresenta informações sobre os testes executados, sucessos, falhas e detalhes de eventuais erros.
+São gerados arquivos HTML e JSON contendo os resultados das execuções, incluindo testes aprovados, falhas e detalhes dos erros encontrados.
 
 ---
 
 # Testes de Performance
 
-Os testes de performance foram implementados com Apache JMeter utilizando o fluxo de compra de passagem do BlazeDemo.
+Os testes de performance foram desenvolvidos com Apache JMeter utilizando o fluxo de compra de passagem do BlazeDemo.
 
 ## Fluxo testado
 
-O cenário automatizado executa as seguintes etapas:
+O cenário executa as seguintes etapas:
 
 1. Acessar o BlazeDemo
 2. Pesquisar voos
 3. Escolher um voo
 4. Finalizar a compra
 
-A conclusão do fluxo foi validada através da resposta:
+A conclusão do fluxo é validada através da resposta:
 
 ```text
 Thank you for your purchase today!
@@ -186,7 +190,7 @@ Thank you for your purchase today!
 
 ## Teste de Carga
 
-Foi realizada uma execução controlada utilizando:
+Foi realizada uma execução controlada com:
 
 - 10 usuários simultâneos
 - Ramp-up de 10 segundos
@@ -206,11 +210,11 @@ Foi realizada uma execução controlada utilizando:
 | Erros | 0,00% |
 | Throughput | 13,9 req/s |
 
-O cenário apresentou 0% de erros e P90 abaixo de 2 segundos.
+Durante essa execução não foram registrados erros e o P90 permaneceu abaixo de 2 segundos.
 
 ## Teste de Pico
 
-Para simular um aumento abrupto de usuários, foi executado um cenário com:
+Também foi executado um cenário com aumento mais rápido no número de usuários:
 
 - 25 usuários simultâneos
 - Ramp-up de 2 segundos
@@ -230,34 +234,34 @@ Para simular um aumento abrupto de usuários, foi executado um cenário com:
 | Erros | 0,00% |
 | Throughput | 46,1 req/s |
 
-Mesmo com o aumento abrupto de usuários, não foram registrados erros e o P90 permaneceu abaixo do limite estabelecido.
+Mesmo com o aumento mais rápido de usuários, não foram registrados erros e o P90 continuou abaixo do limite definido.
 
-## Critério de Desempenho
+## Critério de desempenho
 
-O critério definido para tempo de resposta foi:
+O critério utilizado para tempo de resposta foi:
 
 ```text
 P90 < 2 segundos
 ```
 
-Nos cenários executados:
+Resultados obtidos:
 
 ```text
 Teste de carga: P90 = 302 ms
 Teste de pico:  P90 = 408 ms
 ```
 
-Portanto, o critério de P90 inferior a 2 segundos foi atendido nos testes realizados.
+Nos dois cenários executados, o critério de P90 inferior a 2 segundos foi atendido.
 
-A meta de 250 requisições por segundo não foi validada diretamente contra o BlazeDemo, pois se trata de um serviço público de terceiros e uma carga agressiva poderia impactar sua disponibilidade.
+A meta de 250 requisições por segundo não foi validada diretamente contra o BlazeDemo. Como a aplicação utilizada é um serviço público de terceiros, optei por não aplicar uma carga agressiva que pudesse afetar sua disponibilidade.
 
-O maior throughput observado no cenário controlado foi de:
+O maior throughput obtido nos testes controlados foi:
 
 ```text
 46,1 requisições por segundo
 ```
 
-Dessa forma, os resultados permitem concluir que o critério de tempo de resposta foi atendido nos cenários executados, porém não permitem afirmar que a aplicação suporta 250 requisições por segundo.
+Portanto, os resultados demonstram o atendimento ao critério definido para tempo de resposta dentro da carga aplicada, mas não são suficientes para afirmar que a aplicação suporta 250 requisições por segundo.
 
 ## Relatório JMeter
 
@@ -270,7 +274,7 @@ A execução registrou:
 - Dashboard HTML gerado com sucesso
 - Requests Summary com 100% PASS
 
-Os arquivos relacionados aos testes de performance estão disponíveis em:
+Os arquivos relacionados aos testes de performance estão disponíveis no diretório:
 
 ```text
 jmeter/
@@ -302,7 +306,7 @@ Exemplo de execução do JMeter em modo non-GUI:
 jmeter -n -t jmeter/blazedemo-performance.jmx -l jmeter/results/resultado-pico.jtl -e -o jmeter/report
 ```
 
-Após a execução, o dashboard pode ser acessado através do arquivo:
+Após a execução, o dashboard pode ser acessado pelo arquivo:
 
 ```text
 jmeter/report/index.html
@@ -310,4 +314,4 @@ jmeter/report/index.html
 
 ## Autor
 
-Projeto desenvolvido para demonstração de conhecimentos em automação de testes Web, API, integração contínua e testes de Performance.
+Projeto desenvolvido para um desafio técnico de QA, com foco na aplicação prática de automação de testes Web e API, integração contínua e testes de performance.
